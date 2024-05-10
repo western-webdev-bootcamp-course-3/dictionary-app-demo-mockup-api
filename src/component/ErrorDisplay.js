@@ -4,15 +4,15 @@ import useErrorContext from '../hook/useErrorContext';
 const ErrorDisplay = ({ pageKey }) => {
   const { errors, clearErrors } = useErrorContext();
 
-  // erase errors that have been displayed on a page after 5 seconds
+  // erase the displayed error message after 5 seconds
   useEffect(() => {
     if (errors) {
       const timer = setTimeout(() => {
+        // clear the error message
         clearErrors(pageKey);
-      }, 5000); // clear error message after 5 seconds
+      }, 5000); // 5000 milliseconds = 5 seconds
 
-      // what if an error displays itself
-      // in 3 second, the user decides to close the page
+      // cleanup function
       return () => clearTimeout(timer);
     }
   }, [errors]);

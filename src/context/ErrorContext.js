@@ -6,6 +6,7 @@ const ErrorProvider = ({ children }) => {
   const [errors, setErrors] = useState([]); // { 'home': 'error message', 'word-list': 'error message'}
 
   // reportErrors: add an error message to the errors state
+  // error is a string
   const reportErrors = (key, error) => {
     setErrors((prevErrors) => {
       return {

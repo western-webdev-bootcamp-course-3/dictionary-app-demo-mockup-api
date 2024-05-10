@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import useErrorContext from '../hook/useErrorContext';
 
 // step 1: create a context instance; done
 // step 2: create a provider component; done
@@ -13,6 +14,8 @@ const WordContext = createContext({
 const WordProvider = ({ children }) => {
   const [words, setWords] = useState([]); // [{ id: 'hello', word: 'hello' }]
 
+  const { reportErrors } = useErrorContext();
+
   useEffect(() => {
     // purpose 1: fetch all words from the database
     // purpose 2: set the words to the state
@@ -22,7 +25,8 @@ const WordProvider = ({ children }) => {
         const data = response.data;
         setWords(data);
       } catch (error) {
-        console.log(error);
+        reportErrors('word-list', error.message);
+        reportErrors('home', error.message);
       }
     };
 
@@ -33,16 +37,12 @@ const WordProvider = ({ children }) => {
   // purpose 2: update the words state
   // parameter: word - a string (e.g. 'hello')
   const addWord = async (word) => {
-    try {
-      const response = await axios.post('http://localhost:8000/words', {
-        id: word,
-        word: word,
-      });
-      const data = response.data;
-      setWords([...words, data]);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await axios.post('http://localhost:8000/words', {
+      id: word,
+      word: word,
+    });
+    const data = response.data;
+    setWords([...words, data]);
   };
 
   // purpose 1: update a word in the database
@@ -50,35 +50,31 @@ const WordProvider = ({ children }) => {
   // parameter: oldWord - a string (e.g. 'hello')
   // parameter: newWord - a string (e.g. 'hi')
   const updateWord = async (oldWord, newWord) => {
-    try {
-      // const response = await axios.put(
-      //   `http://localhost:8000/words/${oldWord}`, // the oldWord is used an id here
-      //   {
-      //     id: newWord,
-      //     word: newWord,
-      //   }
-      // );
+    // const response = await axios.put(
+    //   `http://localhost:8000/words/${oldWord}`, // the oldWord is used an id here
+    //   {
+    //     id: newWord,
+    //     word: newWord,
+    //   }
+    // );
 
-      // make a delete request to delete the old word
-      await axios.delete(`http://localhost:8000/words/${oldWord}`); 
+    // make a delete request to delete the old word
+    await axios.delete(`http://localhost:8000/words/${oldWord}`);
 
-      // make a post request to add the new word
-      const response = await axios.post('http://localhost:8000/words', {
-        id: newWord,
-        word: newWord,
-      });
+    // make a post request to add the new word
+    const response = await axios.post('http://localhost:8000/words', {
+      id: newWord,
+      word: newWord,
+    });
 
-      const data = response.data;
-      const updatedWords = words.map((word) => {
-        if (word.id === oldWord) {
-          return data;
-        }
-        return word;
-      });
-      setWords(updatedWords);
-    } catch (error) {
-      console.log(error);
-    }
+    const data = response.data;
+    const updatedWords = words.map((word) => {
+      if (word.id === oldWord) {
+        return data;
+      }
+      return word;
+    });
+    setWords(updatedWords);
   };
 
   // delete a word
@@ -86,13 +82,9 @@ const WordProvider = ({ children }) => {
   // purpose 2: update the words state
   // parameter: word - a string (e.g. 'hello')
   const deleteWord = async (word) => {
-    try {
-      await axios.delete(`http://localhost:8000/words/${word}`); // the word is used an id here
-      const updatedWords = words.filter((w) => w.id !== word);
-      setWords(updatedWords);
-    } catch (error) {
-      console.log(error);
-    }
+    await axios.delete(`http://localhost:8000/words/${word}`); // the word is used an id here
+    const updatedWords = words.filter((w) => w.id !== word);
+    setWords(updatedWords);
   };
 
   return (

@@ -5,14 +5,10 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import DefinitionArea from './DefinitionArea';
 import ErrorDisplay from '../../component/ErrorDisplay';
-import useErrorContext from '../../hook/useErrorContext';
 
 const Home = () => {
   const [definition, setDefinition] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  // gain access to reportErrors
-  const { reportErrors } = useErrorContext();
 
   const { words, addWord } = useWordContext();
 
@@ -41,11 +37,6 @@ const Home = () => {
     };
 
     renderInitialDefinition();
-  }, []);
-
-  // simulate error
-  useEffect(() => {
-    reportErrors('home', 'This is a test error message');
   }, []);
 
   return (

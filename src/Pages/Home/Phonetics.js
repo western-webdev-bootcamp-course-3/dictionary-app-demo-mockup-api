@@ -3,6 +3,8 @@ import Color from '../../constant/Color';
 import { FaRegStar } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import useWordContext from '../../hook/useWordContext';
+import useErrorContext from '../../hook/useErrorContext';
+
 // task: display the word, its phonetics, and a star button
 
 // task 1: implement and test addWord function; done
@@ -11,6 +13,7 @@ import useWordContext from '../../hook/useWordContext';
 const Phonetics = ({ definition }) => {
   const [loading, setLoading] = useState(false);
   const { words, addWord, deleteWord } = useWordContext();
+  const { reportErrors } = useErrorContext();
 
   // addWord function
   const handleAddWord = async () => {
@@ -20,7 +23,7 @@ const Phonetics = ({ definition }) => {
       await addWord(definition.word);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      reportErrors('home', error.message);
     }
   };
 
@@ -31,7 +34,7 @@ const Phonetics = ({ definition }) => {
       await deleteWord(definition.word);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      reportErrors('home', error.message);
     }
   };
 

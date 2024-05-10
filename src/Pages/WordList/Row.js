@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { TiDeleteOutline } from 'react-icons/ti';
 import Color from '../../constant/Color';
 import useWordContext from '../../hook/useWordContext';
+import useErrorContext from '../../hook/useErrorContext';
 
 // task 1: functioning direction button; done
 // task 2: functioning delete button; done
@@ -12,6 +13,7 @@ import useWordContext from '../../hook/useWordContext';
 
 const Row = ({ word, index }) => {
   const { deleteWord, updateWord } = useWordContext();
+  const { reportErrors } = useErrorContext();
 
   // state variable that checks if we are in the edting mode
   const [isEditing, setIsEditing] = useState(false);
@@ -31,7 +33,8 @@ const Row = ({ word, index }) => {
     try {
       await deleteWord(word);
     } catch (error) {
-      console.log(error);
+      // error is an object, it has a few different fields, such as message, name, etc.
+      reportErrors('word-list', error.message);
     }
   };
 
