@@ -1,4 +1,4 @@
-import Color from '../../../constant/Color';
+import Color from "../../../constant/Color";
 // definition object has at least three fields, definition, synonyms, and antonyms
 // definition object may have an extra field named example
 
@@ -7,9 +7,9 @@ const Definition = ({ definitionObject }) => {
     <>
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
           marginBottom: 20,
         }}
       >
@@ -18,14 +18,14 @@ const Definition = ({ definitionObject }) => {
             width: 6,
             height: 6,
             backgroundColor: Color.accent,
-            borderRadius: '50%',
+            borderRadius: "50%",
             marginRight: 20,
           }}
         />
         <div
           style={{
-            fontSize: '1.2rem', // 24px
-            lineHeight: '1.2rem',
+            fontSize: "1.2rem", // 24px
+            lineHeight: "1.2rem",
           }}
         >
           {definitionObject.definition}
@@ -34,8 +34,8 @@ const Definition = ({ definitionObject }) => {
       {definitionObject.example && (
         <div
           style={{
-            fontSize: '1.2rem', // 24px
-            lineHeight: '1.2rem',
+            fontSize: "1.2rem", // 24px
+            lineHeight: "1.2rem",
             color: Color.secondaryText,
             marginBottom: 20,
             marginLeft: 26,

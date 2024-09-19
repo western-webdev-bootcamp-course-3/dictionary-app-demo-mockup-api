@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import useErrorContext from '../hook/useErrorContext';
+import { useEffect } from "react";
+import useErrorContext from "../hook/useErrorContext";
 
 const ErrorDisplay = ({ pageKey }) => {
   const { errors, clearErrors } = useErrorContext();
@@ -19,7 +19,7 @@ const ErrorDisplay = ({ pageKey }) => {
 
   return (
     <div
-      style={{ color: 'red', paddingTop: 20, paddingBottom: 20, fontSize: 20 }}
+      style={{ color: "red", paddingTop: 20, paddingBottom: 20, fontSize: 20 }}
     >
       {errors[pageKey]}
     </div>

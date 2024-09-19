@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 const ErrorContext = createContext();
 
@@ -25,13 +25,12 @@ const ErrorProvider = ({ children }) => {
     });
   };
 
-
   return (
     <ErrorContext.Provider
       value={{
         errors,
         reportErrors,
-        clearErrors
+        clearErrors,
       }}
     >
       {children}

@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import { IoIosSearch } from 'react-icons/io';
-import Color from '../../constant/Color';
+import { useState } from "react";
+import styled from "styled-components";
+import { IoIosSearch } from "react-icons/io";
+import Color from "../../constant/Color";
 
 // task 1: style the search bar - design; finished
 // task 2: capture user input - functionality; finished
@@ -13,7 +13,7 @@ const SearchBar = ({
   initialValue,
   definition,
 }) => {
-  const [text, setText] = useState(initialValue || '');
+  const [text, setText] = useState(initialValue || "");
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -25,7 +25,7 @@ const SearchBar = ({
     e.preventDefault();
     // call the searchWordServer function
     const word = text.trim();
-    if (word === '') return;
+    if (word === "") return;
     console.log(word);
     const data = await searchWordServer(word);
     setDefinition(data);
@@ -35,11 +35,11 @@ const SearchBar = ({
     <InputForm onSubmit={handleSubmit} definition={definition}>
       <Input
         value={text}
-        type='text'
+        type="text"
         onChange={handleChange}
-        placeholder='Search for any word...'
+        placeholder="Search for any word..."
       />
-      <Button type='submit'>
+      <Button type="submit">
         <IoIosSearch size={20} color={Color.accent} />
       </Button>
     </InputForm>
@@ -59,7 +59,7 @@ const InputForm = styled.form`
       ${(props) => {
         if (!props.definition) return Color.error;
         else return Color.accent;
-      }}; 
+      }};
   }
 `;
 

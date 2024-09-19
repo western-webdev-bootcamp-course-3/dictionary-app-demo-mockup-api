@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
-import useErrorContext from '../hook/useErrorContext';
+import { createContext, useState, useEffect } from "react";
+import axios from "axios";
+import useErrorContext from "../hook/useErrorContext";
 
 // step 1: create a context instance; done
 // step 2: create a provider component; done
@@ -21,12 +21,12 @@ const WordProvider = ({ children }) => {
     // purpose 2: set the words to the state
     const fetchWords = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/words');
+        const response = await axios.get("http://localhost:8000/words");
         const data = response.data;
         setWords(data);
       } catch (error) {
-        reportErrors('word-list', error.message);
-        reportErrors('home', error.message);
+        reportErrors("word-list", error.message);
+        reportErrors("home", error.message);
       }
     };
 
@@ -37,7 +37,7 @@ const WordProvider = ({ children }) => {
   // purpose 2: update the words state
   // parameter: word - a string (e.g. 'hello')
   const addWord = async (word) => {
-    const response = await axios.post('http://localhost:8000/words', {
+    const response = await axios.post("http://localhost:8000/words", {
       id: word,
       word: word,
     });
@@ -62,7 +62,7 @@ const WordProvider = ({ children }) => {
     await axios.delete(`http://localhost:8000/words/${oldWord}`);
 
     // make a post request to add the new word
-    const response = await axios.post('http://localhost:8000/words', {
+    const response = await axios.post("http://localhost:8000/words", {
       id: newWord,
       word: newWord,
     });

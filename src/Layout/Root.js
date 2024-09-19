@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
-import styled from 'styled-components';
-import Sidebar from './Sidebar';
-import CollapseButton from './CollapseButton';
-import SidebarHover from './SidebarHover';
-import Color from '../constant/Color';
+import { Outlet } from "react-router-dom";
+import { useState } from "react";
+import styled from "styled-components";
+import Sidebar from "./Sidebar";
+import CollapseButton from "./CollapseButton";
+import SidebarHover from "./SidebarHover";
+import Color from "../constant/Color";
 
 const Root = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -12,16 +12,16 @@ const Root = () => {
   return (
     <div
       style={{
-        flexDirection: 'row',
-        display: 'flex',
-        height: '100vh',
-        overflowY: 'hidden',
+        flexDirection: "row",
+        display: "flex",
+        height: "100vh",
+        overflowY: "hidden",
       }}
     >
       <SidebarWrapper>
         <Sidebar />
       </SidebarWrapper>
-      <SidebarHoverWrapper style={isCollapsed ? {} : { display: 'block' }}>
+      <SidebarHoverWrapper style={isCollapsed ? {} : { display: "block" }}>
         <SidebarHover setIsCollapsed={setIsCollapsed} />
       </SidebarHoverWrapper>
       <CollapseWrapper>

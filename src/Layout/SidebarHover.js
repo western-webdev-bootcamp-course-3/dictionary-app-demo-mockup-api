@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { IoIosClose } from 'react-icons/io';
-import Color from '../constant/Color';
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { IoIosClose } from "react-icons/io";
+import Color from "../constant/Color";
 
 const nvaList = [
-  { path: '/', name: 'Home' },
-  { path: '/word-list', name: 'Word list' },
+  { path: "/", name: "Home" },
+  { path: "/word-list", name: "Word list" },
 ];
 
 const SidebarHover = ({ setIsCollapsed }) => {
@@ -15,7 +15,7 @@ const SidebarHover = ({ setIsCollapsed }) => {
         <h1>My dictionary</h1>
         <IoIosClose
           size={25}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
           onClick={() => setIsCollapsed(true)}
         />
       </Header>
@@ -49,7 +49,7 @@ const Header = styled.div`
   }
 
   h1::before {
-    content: url('logo.svg');
+    content: url("logo.svg");
     margin-right: 0.5rem;
   }
 `;

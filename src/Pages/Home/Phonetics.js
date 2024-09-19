@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import Color from '../../constant/Color';
-import { FaRegStar } from 'react-icons/fa';
-import { FaStar } from 'react-icons/fa';
-import useWordContext from '../../hook/useWordContext';
-import useErrorContext from '../../hook/useErrorContext';
+import { useState } from "react";
+import Color from "../../constant/Color";
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import useWordContext from "../../hook/useWordContext";
+import useErrorContext from "../../hook/useErrorContext";
 
 // task: display the word, its phonetics, and a star button
 
@@ -23,7 +23,7 @@ const Phonetics = ({ definition }) => {
       await addWord(definition.word);
       setLoading(false);
     } catch (error) {
-      reportErrors('home', error.message);
+      reportErrors("home", error.message);
     }
   };
 
@@ -34,33 +34,33 @@ const Phonetics = ({ definition }) => {
       await deleteWord(definition.word);
       setLoading(false);
     } catch (error) {
-      reportErrors('home', error.message);
+      reportErrors("home", error.message);
     }
   };
 
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
       <div>
         <div
           style={{
-            fontSize: '4rem', // 64px
-            fontWeight: 'bold',
-            lineHeight: '4.5rem',
+            fontSize: "4rem", // 64px
+            fontWeight: "bold",
+            lineHeight: "4.5rem",
           }}
         >
           {definition.word}
         </div>
         <div
           style={{
-            fontStyle: 'italic',
-            fontSize: '1.5rem', // 24px
-            lineHeight: '2.25rem',
+            fontStyle: "italic",
+            fontSize: "1.5rem", // 24px
+            lineHeight: "2.25rem",
             color: Color.accent,
           }}
         >
@@ -69,7 +69,7 @@ const Phonetics = ({ definition }) => {
       </div>
       {words.some((element) => element.word === definition.word) ? (
         <button
-          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          style={{ background: "none", border: "none", cursor: "pointer" }}
           onClick={handleDeleteWord}
           disabled={loading}
         >
@@ -77,7 +77,7 @@ const Phonetics = ({ definition }) => {
         </button>
       ) : (
         <button
-          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          style={{ background: "none", border: "none", cursor: "pointer" }}
           onClick={handleAddWord}
           disabled={loading}
         >

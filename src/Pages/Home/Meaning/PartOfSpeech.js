@@ -1,24 +1,24 @@
-import Color from '../../../constant/Color';
+import Color from "../../../constant/Color";
 
 const PartOfSpeech = ({ partOfSpeech }) => {
   return (
     <div
       style={{
-        marginTop: '2rem',
-        marginBottom: '2rem',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        marginTop: "2rem",
+        marginBottom: "2rem",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
       }}
     >
       <div
         style={{
-          fontStyle: 'italic',
-          fontSize: '1.5rem', // 24px
-          lineHeight: '2.25rem',
-          fontWeight: 'bold',
-          marginRight: '1rem',
+          fontStyle: "italic",
+          fontSize: "1.5rem", // 24px
+          lineHeight: "2.25rem",
+          fontWeight: "bold",
+          marginRight: "1rem",
         }}
       >
         {partOfSpeech}

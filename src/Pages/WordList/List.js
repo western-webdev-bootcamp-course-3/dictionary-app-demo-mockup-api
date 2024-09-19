@@ -1,6 +1,6 @@
-import useWordContext from '../../hook/useWordContext';
-import Color from '../../constant/Color';
-import Row from './Row';
+import useWordContext from "../../hook/useWordContext";
+import Color from "../../constant/Color";
+import Row from "./Row";
 
 const List = () => {
   const { words } = useWordContext();
@@ -9,10 +9,10 @@ const List = () => {
     return (
       <div
         style={{
-          marginTop: '4rem',
-          fontSize: '1.2rem',
-          lineHeight: '1.5rem',
-          color: Color.secondaryText
+          marginTop: "4rem",
+          fontSize: "1.2rem",
+          lineHeight: "1.5rem",
+          color: Color.secondaryText,
         }}
       >
         No words saved yet
@@ -22,7 +22,7 @@ const List = () => {
   return (
     <div
       style={{
-        marginTop: '4rem',
+        marginTop: "4rem",
       }}
     >
       {words.map((word, index) => (

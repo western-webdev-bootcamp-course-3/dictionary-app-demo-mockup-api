@@ -1,14 +1,14 @@
-import Color from '../../../../constant/Color';
+import Color from "../../../../constant/Color";
 
 const Synonym = ({ synonym, index, length }) => {
   return (
     <>
       <div
         style={{
-          fontSize: '1.2rem', // 24px
-          lineHeight: '1.2rem',
+          fontSize: "1.2rem", // 24px
+          lineHeight: "1.2rem",
           color: Color.accent,
-          marginRight: '1rem', // 16px
+          marginRight: "1rem", // 16px
         }}
       >
         {synonym}
@@ -19,7 +19,7 @@ const Synonym = ({ synonym, index, length }) => {
             width: 6,
             height: 6,
             backgroundColor: Color.borderColor,
-            borderRadius: '50%',
+            borderRadius: "50%",
             marginRight: 20,
           }}
         />

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import Color from '../constant/Color';
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import Color from "../constant/Color";
 
 const nvaList = [
-    { path: '/', name: 'Home' },
-    { path: '/word-list', name: 'Word list' },
-]
+  { path: "/", name: "Home" },
+  { path: "/word-list", name: "Word list" },
+];
 
 const Sidebar = () => {
   return (
@@ -15,15 +15,11 @@ const Sidebar = () => {
       </Header>
       <Navigation>
         <ul>
-          {
-            nvaList.map((navItem) => (
-              <li key={navItem.path}>
-                <NavLink to={navItem.path}>
-                  {navItem.name}
-                </NavLink>
-              </li>
-            ))
-          }
+          {nvaList.map((navItem) => (
+            <li key={navItem.path}>
+              <NavLink to={navItem.path}>{navItem.name}</NavLink>
+            </li>
+          ))}
         </ul>
       </Navigation>
     </div>
@@ -44,7 +40,7 @@ const Header = styled.div`
   }
 
   h1::before {
-    content: url('logo.svg');
+    content: url("logo.svg");
     margin-right: 0.5rem;
   }
 `;
